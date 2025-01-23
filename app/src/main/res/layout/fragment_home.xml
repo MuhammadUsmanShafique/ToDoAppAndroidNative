@@ -1,0 +1,127 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/lightPurple"
+    >
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/topsec"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/to_do_list_recycler_view"
+        android:background="@color/Purple"
+        android:padding="15dp"
+        >
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:text="TODO APP"
+            android:textColor="@android:color/white"
+            android:textSize="22sp"
+
+            />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:src="@drawable/vector"
+            />
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/to_do_list_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:listitem="@layout/to_do_item_layout"
+        app:layout_constraintTop_toBottomOf="@id/topsec"
+        android:background="@color/lightPurple"
+        />
+
+    <Button
+        android:id="@+id/add_task_btn"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:padding="0dp"
+        android:text="+"
+        app:layout_constraintTop_toBottomOf="@id/to_do_list_recycler_view"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginEnd="18dp"
+        android:textSize="20sp"
+        android:layout_marginBottom="10dp"
+        />
+
+<!--    <LinearLayout-->
+<!--        android:id="@+id/bot_sec"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintRight_toRightOf="parent"-->
+<!--        android:background="@color/white"-->
+<!--        android:padding="20dp"-->
+<!--        android:weightSum="2"-->
+
+<!--        >-->
+<!--        <LinearLayout-->
+<!--            android:id="@+id/view_all"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="vertical"-->
+<!--            android:layout_weight="1"-->
+<!--            android:gravity="center_horizontal"-->
+<!--            >-->
+<!--            <ImageView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:src="@drawable/all"-->
+<!--                android:layout_marginBottom="3dp"-->
+<!--                />-->
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="All"-->
+<!--                android:textColor="@color/Purple"-->
+<!--                />-->
+<!--        </LinearLayout>-->
+<!--        <LinearLayout-->
+<!--            android:id="@+id/view_completed"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="vertical"-->
+<!--            android:layout_weight="1"-->
+<!--            android:gravity="center_horizontal"-->
+<!--            >-->
+<!--            <ImageView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:src="@drawable/complete_bot"-->
+<!--                android:layout_marginBottom="3dp"-->
+<!--                />-->
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Completed"-->
+<!--                android:textColor="#8B8787"-->
+<!--                />-->
+<!--        </LinearLayout>-->
+<!--    </LinearLayout>-->
+
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
