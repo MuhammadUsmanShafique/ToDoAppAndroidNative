@@ -45,24 +45,28 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/to_do_list_recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:listitem="@layout/to_do_item_layout"
-        app:layout_constraintTop_toBottomOf="@id/topsec"
+        android:layout_height="0dp"
+        android:layout_marginTop="4dp"
         android:background="@color/lightPurple"
+        app:layout_constraintTop_toBottomOf="@id/topsec"
+        tools:layout_editor_absoluteX="0dp"
+
+        tools:listitem="@layout/to_do_item_layout" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/add_task_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+    android:padding="9dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:src="@drawable/plus"
+        android:background="@drawable/rounded_btn"
+        android:backgroundTint="@color/Purple"
+        android:layout_marginBottom="100dp"
         />
 
-    <Button
-        android:id="@+id/add_task_btn"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:padding="0dp"
-        android:text="+"
-        app:layout_constraintTop_toBottomOf="@id/to_do_list_recycler_view"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginEnd="18dp"
-        android:textSize="20sp"
-        android:layout_marginBottom="10dp"
-        />
+
 
 <!--    <LinearLayout-->
 <!--        android:id="@+id/bot_sec"-->

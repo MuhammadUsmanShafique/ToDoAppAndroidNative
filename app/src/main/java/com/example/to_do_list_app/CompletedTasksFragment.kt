@@ -1,9 +1,11 @@
 package com.example.to_do_list_app
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -30,12 +32,18 @@ class CompletedTasksFragment : Fragment() {
             ToDoItemViewModel("Develop Cross-Platform App", "Build an app with Flutter or React Native", true),
         )
         val completedTasks = toDoList.filter{it.isCompleted}
-
-
-
-
         val adapter = RecyclerViewAdapter(completedTasks, true)
         recyclerView.adapter = adapter
+
+        val backBtn = view.findViewById<ImageView>(R.id.back_btn)
+        backBtn.setOnClickListener{
+            val intent = Intent(requireContext(),MainActivity::class.java)
+            startActivity(intent)
+
+        }
+
+
+
 
         return view
     }

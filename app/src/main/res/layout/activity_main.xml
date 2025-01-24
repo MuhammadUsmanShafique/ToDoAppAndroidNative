@@ -17,7 +17,7 @@
         android:id="@+id/bottomNav"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/container"
         app:menu="@menu/bottom_nav_menu"
         />
 </androidx.constraintlayout.widget.ConstraintLayout>

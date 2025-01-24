@@ -1,9 +1,13 @@
 package com.example.to_do_list_app
 
+import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
+import androidx.lifecycle.findViewTreeViewModelStoreOwner
 import androidx.recyclerview.widget.RecyclerView
 
 // Adapter class for RecyclerView
@@ -13,9 +17,24 @@ class RecyclerViewAdapter(
 ) : RecyclerView.Adapter<RecyclerViewAdapter.ToDoViewHolder>() {
 
     // ViewHolder class to hold references to the item views
-    class ToDoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class ToDoViewHolder(itemView: View ,isCompletedTaskList: Boolean) : RecyclerView.ViewHolder(itemView) {
         val toDoTitle: TextView = itemView.findViewById(R.id.todo_title) // Title TextView
         val toDoSubtitle: TextView = itemView.findViewById(R.id.todo_subtitle) // Subtitle TextView
+
+
+
+        val editBtn:ImageView? = itemView.findViewById(R.id.edit)
+
+        init {
+            if (!isCompletedTaskList) {
+                editBtn?.setOnClickListener {
+                    val intent = Intent(itemView.context, EditTask::class.java)
+                    intent.putExtra("title", toDoTitle.text.toString())
+                    intent.putExtra("subTitle", toDoSubtitle.text.toString())
+                    itemView.context.startActivity(intent)
+                }
+            }
+        }
     }
 
     // Inflates the item layout and returns a ViewHolder
@@ -28,10 +47,8 @@ class RecyclerViewAdapter(
             itemView = LayoutInflater.from(parent.context)
                 .inflate(R.layout.to_do_item_layout, parent, false)
 
-
-
         }
-        return ToDoViewHolder(itemView)
+        return ToDoViewHolder(itemView,isCompletedTaskList)
     }
 
     // Binds the data to the views for each item

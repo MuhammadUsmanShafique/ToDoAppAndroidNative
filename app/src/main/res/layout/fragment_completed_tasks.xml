@@ -1,11 +1,43 @@
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/lightPurple"
+    android:orientation="vertical"
     >
+
+
+    <LinearLayout
+        android:id="@+id/top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/Purple"
+        android:padding="25dp"
+
+        >
+
+        <ImageView
+            android:id="@+id/back_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/back_btn"
+            android:layout_gravity="center_vertical"
+            />
+
+        <TextView
+            android:id="@+id/add_task_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:text="Completed Tasks"
+            android:textColor="@android:color/white"
+            android:textSize="24sp"
+            android:layout_gravity="center_vertical"
+            />
+    </LinearLayout>
+
 
 
     <androidx.recyclerview.widget.RecyclerView
@@ -13,7 +45,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:listitem="@layout/activity_completed_task_list"
+
         />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
