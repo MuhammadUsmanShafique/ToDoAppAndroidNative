@@ -49,7 +49,7 @@
         android:layout_marginTop="4dp"
         android:background="@color/lightPurple"
         app:layout_constraintTop_toBottomOf="@id/topsec"
-        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteX="16dp"
 
         tools:listitem="@layout/to_do_item_layout" />
 
@@ -63,7 +63,8 @@
         android:src="@drawable/plus"
         android:background="@drawable/rounded_btn"
         android:backgroundTint="@color/Purple"
-        android:layout_marginBottom="100dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
         />
 
 

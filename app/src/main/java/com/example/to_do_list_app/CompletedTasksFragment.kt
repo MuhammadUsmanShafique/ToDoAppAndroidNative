@@ -7,8 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.room.Room
+import kotlinx.coroutines.launch
 
 class CompletedTasksFragment : Fragment() {
     override fun onCreateView(
@@ -22,18 +25,31 @@ class CompletedTasksFragment : Fragment() {
 
         // Set LayoutManager for RecyclerView
         recyclerView.layoutManager = LinearLayoutManager(requireContext()) // Use requireContext()
-        val toDoList = listOf(
-            ToDoItemViewModel("Learn Kotlin", "Master Kotlin for Android development", true),
-            ToDoItemViewModel("Build a Portfolio Website", "Create a personal website showcasing your projects", false),
-            ToDoItemViewModel("Game Development Fundamentals", "Study basic game development concepts", true),
-            ToDoItemViewModel("Explore Machine Learning", "Dive into machine learning basics and algorithms", false),
-            ToDoItemViewModel("Develop Cross-Platform App", "Build an app with Flutter or React Native", true),
-            ToDoItemViewModel("Read JavaScript Book", "Understand advanced JavaScript concepts for web development hgvvghvghvghvhgvghvhgvhgvgs", false),
-            ToDoItemViewModel("Develop Cross-Platform App", "Build an app with Flutter or React Native", true),
-        )
-        val completedTasks = toDoList.filter{it.isCompleted}
-        val adapter = RecyclerViewAdapter(completedTasks, true)
-        recyclerView.adapter = adapter
+//        val toDoList = listOf(
+//            ToDoItemViewModel("Learn Kotlin", "Master Kotlin for Android development", true),
+//            ToDoItemViewModel("Build a Portfolio Website", "Create a personal website showcasing your projects", false),
+//            ToDoItemViewModel("Game Development Fundamentals", "Study basic game development concepts", true),
+//            ToDoItemViewModel("Explore Machine Learning", "Dive into machine learning basics and algorithms", false),
+//            ToDoItemViewModel("Develop Cross-Platform App", "Build an app with Flutter or React Native", true),
+//            ToDoItemViewModel("Read JavaScript Book", "Understand advanced JavaScript concepts for web development hgvvghvghvghvhgvghvhgvhgvgs", false),
+//            ToDoItemViewModel("Develop Cross-Platform App", "Build an app with Flutter or React Native", true),
+//        )
+        lifecycleScope.launch {
+            // Creating the Room database instance
+            val db = ToDoDatabase.getDatabase(requireContext())
+
+            // Accessing the DAO
+            val todoDao = db.todoListDao()
+
+            val completedTasks = todoDao.getCompletedTasks()
+            val adapter = RecyclerViewAdapter(completedTasks, true)
+            recyclerView.adapter = adapter
+
+
+        }
+
+
+
 
         val backBtn = view.findViewById<ImageView>(R.id.back_btn)
         backBtn.setOnClickListener{

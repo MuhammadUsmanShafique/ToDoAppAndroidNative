@@ -22,14 +22,14 @@ class CompletedTasks : AppCompatActivity() {
         }
 
 
-        val recyclerView = findViewById<RecyclerView>(R.id.completed_tasks_rec_view)
-
-
-        // Set LayoutManager for RecyclerView
-        recyclerView.layoutManager = LinearLayoutManager(this)
-        val completedTasks = intent.getSerializableExtra("completedTasks") as List<ToDoItemViewModel>
-        val adapter = RecyclerViewAdapter(completedTasks,true)
-        recyclerView.adapter = adapter
+//        val recyclerView = findViewById<RecyclerView>(R.id.completed_tasks_rec_view)
+//
+//
+//        // Set LayoutManager for RecyclerView
+//        recyclerView.layoutManager = LinearLayoutManager(this)
+//        val completedTasks = intent.getSerializableExtra("completedTasks") as List<ToDoItemViewModel>
+//        val adapter = RecyclerViewAdapter(completedTasks,true)
+//        recyclerView.adapter = adapter
 
     }
 }

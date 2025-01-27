@@ -50,7 +50,7 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         return false
     }
 
-    private fun replaceFragment(fragment: Fragment) {
+    public fun replaceFragment(fragment: Fragment) {
         val transaction: FragmentTransaction = fragmentManager.beginTransaction()
         transaction.replace(R.id.container, fragment)
         transaction.commit()
