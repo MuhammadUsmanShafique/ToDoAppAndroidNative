@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -85,10 +86,13 @@ class Home : Fragment() {
             val todoDao = db.todoListDao()
             todoDao.deleteTask(taskToDelete)
 
-
-
-
             withContext(Dispatchers.Main) {
+                Toast.makeText(
+                    requireContext(),
+                    "Task ${taskToDelete.taskTitle} has been deleted sucessfully!",
+                    Toast.LENGTH_SHORT
+                ).show()
+
                 val fragmentTransaction = parentFragmentManager.beginTransaction()
                 fragmentTransaction.replace(R.id.container,Home())
                 fragmentTransaction.addToBackStack(null) // This allows going back to the HomeFragment
@@ -97,26 +101,35 @@ class Home : Fragment() {
 
 
         }
-//
+
     }
 
 
 
 
-    fun onMarkComplete(task_id: Int) {
-        lifecycleScope.launch(Dispatchers.IO) {
-            val db = ToDoDatabase.getDatabase(requireContext())
-            val todoDao = db.todoListDao()
-            todoDao.markAsCompleted(task_id)
+    fun onMarkComplete(task_id: Int, isCompleted:Boolean) {
 
-            activity?.let {
-                if (it is MainActivity) {
+        if (!isCompleted) {
+            lifecycleScope.launch(Dispatchers.IO) {
+                val db = ToDoDatabase.getDatabase(requireContext())
+                val todoDao = db.todoListDao()
+                todoDao.markAsCompleted(task_id)
 
-                    val menuItem = it.findViewById<BottomNavigationView>(R.id.bottomNav)
-                        .menu.findItem(R.id.completed)
-                    it.onNavigationItemSelected(menuItem)
+                withContext(Dispatchers.Main) {
+                    Toast.makeText(
+                        requireContext(),
+                        "Task marked as completed!",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
             }
+        }
+        else{
+            Toast.makeText(
+                requireContext(),
+                "Task was already marked as completed!",
+                Toast.LENGTH_SHORT
+            ).show()
         }
     }
 

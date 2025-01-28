@@ -18,7 +18,7 @@ class RecyclerViewAdapter(
     private val toDoList: List<ToDoList>,
     private val isCompletedTaskList: Boolean,
     private val onDeleteTask: ((ToDoList) -> Unit)? = null ,// Optional callback (for deleting task on Home)
-    private val onMarkComplete:((Int)-> Unit?)? = null
+    private val onMarkComplete:((Int,Boolean)-> Unit?)? = null
 ) : RecyclerView.Adapter<RecyclerViewAdapter.ToDoViewHolder>() {
 
     // ViewHolder class to hold references to the item views
@@ -64,7 +64,7 @@ class RecyclerViewAdapter(
                 onDeleteTask?.invoke(currentItem)
             }
             holder.markCompletedBtn?.setOnClickListener{
-                onMarkComplete?.invoke(currentItem.tId)
+                onMarkComplete?.invoke(currentItem.tId,currentItem.isCompleted)
             }
 
 
